@@ -1,4 +1,5 @@
 <template>
+  <the-bg></the-bg>
   <div class="container">
     <the-header></the-header>
     <films-list></films-list>
@@ -6,11 +7,12 @@
 </template>
 
 <script>
+import TheBg from "./components/UI/TheBg";
 import TheHeader from "./components/layout/TheHeader";
 import FilmsList from "./components/layout/FilmsList";
 
 export default {
-  components: { TheHeader, FilmsList },
+  components: { TheHeader, FilmsList, TheBg },
 
   created() {
     this.$store.dispatch("loadFilms");
@@ -30,6 +32,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   background-blend-mode: lighten;
+  position: relative;
 }
 
 h1,

@@ -9,6 +9,7 @@ export default createStore({
   state() {
     return {
       filmsList: [],
+      currentBg: "",
     };
   },
   mutations,

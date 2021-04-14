@@ -1,6 +1,6 @@
 <template>
   <div>
-    <li class="card">
+    <li class="card" @mouseover="getBgImg">
       <img class="img" :src="getImgUrl" :alt="title" />
       <div class="info-box">
         <h2 class="title">{{ title }}</h2>
@@ -18,7 +18,11 @@ export default {
       return "https://image.tmdb.org/t/p/w500" + this.imgUrl;
     },
   },
-  methods: {},
+  methods: {
+    getBgImg() {
+      this.$store.dispatch("changeBG", this.getImgUrl);
+    },
+  },
 };
 </script>
 
@@ -47,15 +51,18 @@ export default {
   color: #fff;
 }
 .info-btn {
-  padding: 5px 25px;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  padding: 8px 0px;
   background-color: red;
   color: #fff;
   font-weight: 100;
   font-size: 19px;
 }
 .card {
-  max-width: 300px;
-  height: 400px;
+  max-width: 250px;
+  height: 350px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
