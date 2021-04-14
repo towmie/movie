@@ -7,7 +7,9 @@ import getters from "./getters";
 
 export default createStore({
   state() {
-    return {};
+    return {
+      filmsList: [],
+    };
   },
   mutations,
   actions,
