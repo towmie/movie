@@ -1,6 +1,12 @@
 <template>
   <div>
-    <input type="text" v-model="serchedFilm" />
+    <input
+      type="text"
+      v-model.lazy="serchedValue"
+      placeholder="Search"
+      debounce="500"
+    />
+    <button></button>
   </div>
 </template>
 
@@ -8,19 +14,39 @@
 export default {
   data() {
     return {
-      serchedFilm: "",
+      serchedValue: "",
     };
   },
+  watch: {
+    serchedValue: "serchFilm",
+  },
   methods: {
-    serchFilm() {
-      //   let search = this.serchedFilm;
-      //   setTimeout(function () {
-      //     console.log(search);
-      //   }, 1000);
-      //   this.$store.dispatch
+    serchFilm(val) {
+      this.$store.dispatch("findMovie", val);
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+input {
+  min-width: 200px;
+  padding: 10px 30px 10px 15px;
+  font-size: 17px;
+  font-family: inherit;
+  border-radius: 5px;
+  background-color: #fff;
+  border: none;
+}
+button {
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+  background-color: transparent;
+  margin-left: -30px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-image: url(./../../assets/search.svg);
+}
+</style>

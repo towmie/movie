@@ -3,7 +3,7 @@
 export default {
   loadFilms(state, { results }) {
     state.filmsList = results;
-    // console.log(results[0]);
+    console.log(results[2]);
   },
 
   changeBG(state, payload) {

@@ -30,12 +30,11 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  /* background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   transition: all 0.3s ease-in;
-  filter: blur(10px);
+  filter: blur(7px);
 }
 
 .bg::after {
@@ -47,6 +46,6 @@ export default {
   left: 0;
   right: 0;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 </style>

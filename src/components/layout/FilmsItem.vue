@@ -1,32 +1,73 @@
 <template>
   <div>
     <li class="card" @mouseover="getBgImg">
+      <p class="rating">
+        <span>{{ rating }}</span>
+      </p>
       <img class="img" :src="getImgUrl" :alt="title" />
       <div class="info-box">
         <h2 class="title">{{ title }}</h2>
-        <a href="#" class="info-btn">Show Info</a>
+        <router-link :to="dialogUrl" class="info-btn" @click="showData"
+          >Show Info</router-link
+        >
       </div>
     </li>
   </div>
+  <info-dialog></info-dialog>
+  <!-- <router-view></router-view> -->
 </template>
 
 <script>
+import InfoDialog from "./InfoDialog.vue";
 export default {
+  components: { InfoDialog },
   props: ["id", "title", "imgUrl", "rating", "description"],
   computed: {
     getImgUrl() {
       return "https://image.tmdb.org/t/p/w500" + this.imgUrl;
+    },
+    dialogUrl() {
+      return "/" + this.id;
     },
   },
   methods: {
     getBgImg() {
       this.$store.dispatch("changeBG", this.getImgUrl);
     },
+    showData() {
+      const seleCtedFilm = this.$store.getters.getFilmsList.filter(
+        (movie) => movie.id === this.id
+      )[0];
+      console.log(seleCtedFilm);
+    },
   },
 };
 </script>
 
 <style scoped>
+.rating {
+  position: absolute;
+  margin: 0;
+  top: 15px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+
+  font-weight: 700;
+  text-align: center;
+  font-size: 23px;
+  color: #fff;
+
+  background-color: red;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.rating span {
+  position: relative;
+  top: 10px;
+}
+
 .info-box {
   position: absolute;
   left: 50%;
@@ -73,8 +114,15 @@ export default {
 .card:hover .info-box {
   bottom: -75px;
 }
+.card:hover .rating {
+  opacity: 1;
+}
 .img {
   object-fit: cover;
   width: 100%;
+}
+.card:hover .img {
+  transition: all 0.3s ease-in;
+  transform: scale(1.03);
 }
 </style>

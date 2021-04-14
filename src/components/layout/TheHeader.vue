@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h2 class="title"></h2>
+    <router-link to="/" class="title">Home</router-link>
     <search-film></search-film>
   </header>
 </template>
@@ -12,4 +12,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 10px 0;
+}
+h2 {
+  display: block;
+}
+</style>
