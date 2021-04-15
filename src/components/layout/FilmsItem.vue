@@ -13,14 +13,12 @@
       </div>
     </li>
   </div>
-  <info-dialog></info-dialog>
-  <!-- <router-view></router-view> -->
 </template>
 
 <script>
-import InfoDialog from "./InfoDialog.vue";
+// import InfoDialog from "./InfoDialog.vue";
 export default {
-  components: { InfoDialog },
+  // components: { InfoDialog },
   props: ["id", "title", "imgUrl", "rating", "description"],
   computed: {
     getImgUrl() {
@@ -47,6 +45,7 @@ export default {
 <style scoped>
 .rating {
   position: absolute;
+  z-index: 10;
   margin: 0;
   top: 15px;
   right: 20px;
@@ -77,8 +76,6 @@ export default {
   transform: translateX(-50%);
 
   text-align: center;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.17, 0.67, 0.43, 0.99);
 }
 
@@ -124,5 +121,8 @@ export default {
 .card:hover .img {
   transition: all 0.3s ease-in;
   transform: scale(1.03);
+}
+.card:hover {
+  background-color: #000;
 }
 </style>
