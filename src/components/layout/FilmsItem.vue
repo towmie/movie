@@ -16,10 +16,9 @@
 </template>
 
 <script>
-// import InfoDialog from "./InfoDialog.vue";
 export default {
-  // components: { InfoDialog },
   props: ["id", "title", "imgUrl", "rating", "description"],
+
   computed: {
     getImgUrl() {
       return "https://image.tmdb.org/t/p/w500" + this.imgUrl;

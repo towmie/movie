@@ -1,12 +1,13 @@
 "use strict";
 
 export default {
-  async loadFilms(context) {
+  async loadFilms(context, payload = 1) {
     try {
       const resp = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=964401a7366717c6e0b71563c80e8010&page=1"
+        `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=964401a7366717c6e0b71563c80e8010&page=${payload}`
       );
       const data = await resp.json();
+      console.log(data);
 
       context.commit("loadFilms", data);
     } catch (err) {

@@ -2,20 +2,24 @@
   <the-bg></the-bg>
   <div class="container">
     <the-header></the-header>
-    <films-list></films-list>
+    <router-view></router-view>
+    <!-- <films-list></films-list> -->
   </div>
 </template>
 
 <script>
 import TheBg from "./components/UI/TheBg";
 import TheHeader from "./components/layout/TheHeader";
-import FilmsList from "./components/layout/FilmsList";
+// import FilmsList from "./components/layout/FilmsList";
 
 export default {
-  components: { TheHeader, FilmsList, TheBg },
+  components: { TheHeader, TheBg },
 
-  created() {
-    this.$store.dispatch("loadFilms");
+  watch: {
+    $route(page) {
+      const pageId = page.params.pageId;
+      this.$store.dispatch("loadFilms", pageId);
+    },
   },
 };
 </script>

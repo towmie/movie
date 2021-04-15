@@ -10,6 +10,7 @@ export default createStore({
     return {
       filmsList: [],
       currentBg: "",
+      currentPage: null,
     };
   },
   mutations,
